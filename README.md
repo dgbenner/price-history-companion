@@ -1,25 +1,67 @@
 # Price Intelligence Tracker
 
-A long-term price tracking and analysis tool that reveals retail pricing patterns, seasonal trends, and helps consumers make informed purchasing decisions based on historical data rather than marketing hype.
+Exposing price exploitation of people managing chronic health conditions through long-term price tracking and historical analysis.
+
+## The Problem
+
+People managing chronic conditions - eczema, diabetes, sleep apnea - face a captive market:
+
+- **Information asymmetry**: Newly diagnosed patients don't know what supplies *should* cost
+- **Urgency over research**: You need CPAP filters NOW, can't wait to comparison shop
+- **Trust exploitation**: Healthcare-adjacent retailers charge 2-3x market rates using medical branding
+- **Cognitive load**: Managing symptoms leaves little energy for price intelligence
+- **Predatory pricing**: Retailers exploit necessity purchases with algorithmic pricing and manufactured urgency
+
+**Real example:** Clinic-affiliated DME suppliers charge $40 for CPAP filters available online for $12. They bet on patient trust, urgency, and information gaps.
 
 ## What This Does
 
-Instead of chasing today's "deal," this tool builds a historical database of product prices over months and years, revealing:
+Instead of chasing today's "deal," this tool builds a historical database of product prices over months and years for **chronic condition supplies**, revealing:
 
-- **Real vs. Fake Sales**: Did that item actually drop 40%, or was the price raised last week?
-- **Seasonal Patterns**: When do back-to-school supplies actually go on sale? When's the real Black Friday bottom?
-- **Price Floors & Ceilings**: What's a genuinely good price vs. retailer marketing?
-- **Long-term Trends**: Is this product category getting more expensive over time?
+- **Exploitation patterns**: Is that "medical supplier" charging 3x fair market value?
+- **Real vs. fake sales**: Did that price actually drop 40%, or was it raised last week?
+- **Seasonal patterns**: When do diabetic supplies or skincare products actually go on sale?
+- **Price baselines**: What's a genuinely good price vs. retailer markup?
+- **Long-term trends**: Track inflation and supply chain impacts on necessities
 
-## The Problem We're Solving
+This isn't about luxury items or discretionary purchases. This is about **restoring power to people who are already dealing with enough**.
 
-Retailers use psychological pricing tactics:
-- Artificially inflating "original" prices to show bigger discounts
-- Creating urgency with "limited time" sales that repeat monthly
-- Strategic pricing around holidays and shopping events
-- Inconsistent pricing across different stores/regions
+## Why This Matters
 
-Without historical data, consumers can't tell if a "deal" is actually a deal. This tool gives you that data.
+### The Growing Crisis
+
+Healthcare-adjacent supply costs are rising while affected populations grow at epidemic rates:
+
+- **Eczema/Dermatitis**: 31.6M Americans (10.1%), with incidence increasing due to environmental factors, microplastics, and chemical sensitivities
+- **Sleep Apnea**: 39M US adults diagnosed (up from 25M in 2017), CPAP supplies costing $500-2000 annually
+- **Diabetes**: 38.4M Americans (11.6%) requiring ongoing supplies, with Type 2 cases growing rapidly
+
+These conditions share common characteristics:
+- Lifelong management required
+- Regular supply repurchase (weekly to monthly)
+- Limited product options that work for each individual
+- Significant price variance across retailers (50-300% markups common)
+- Insurance often doesn't cover OTC management supplies
+
+### The Captive Market
+
+When you find a skincare product that doesn't trigger eczema flares, or a CPAP mask that actually seals properly, you're locked into buying it repeatedly - often at whatever price retailers set.
+
+**What newly diagnosed patients don't know:**
+- What supplies *should* cost (baseline pricing)
+- That "clinic suppliers" mark up 2-3x over online retailers
+- That prices fluctuate 30-50% seasonally
+- That buying direct online is safe and legitimate
+- When to stock up vs. when to wait
+
+**What historical data provides:**
+- **Baseline expectations**: "CPAP filters range $8-15, not $40"
+- **Confidence to switch retailers**: "This isn't medical-grade pricing, it's exploitation"
+- **Timing guidance**: "Eczema creams drop 30% every July, stock up then"
+- **Validation**: "I'm not being unreasonable questioning this markup"
+- **One less thing to worry about**: Automated intelligence for people already overwhelmed
+
+In an era of algorithmic pricing and manufactured urgency, having your own historical price data is a superpower. For people managing chronic conditions, it's also economic survival.
 
 ## How It Works
 
@@ -207,4 +249,4 @@ This tool is for personal educational use. Users are responsible for complying w
 
 ---
 
-**Why This Matters**: In an era of algorithmic pricing and manufactured urgency, having your own historical price data is a superpower. This tool puts that power in your hands.
+**The Bottom Line**: In an era of algorithmic pricing and manufactured urgency, having your own historical price data is a superpower. For people managing chronic conditions who are already dealing with enough, this tool removes one more burden - and exposes the retailers exploiting their necessity purchases.
