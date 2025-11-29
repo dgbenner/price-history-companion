@@ -13,9 +13,28 @@ class Product:
     name: str
     size: str  # e.g., '5 oz', '2x2.5 mL'
     category: str  # e.g., 'skincare', 'eye-drops'
-    
+    upc: Optional[str] = None  # Universal Product Code
+    target_url: Optional[str] = None
+    walmart_url: Optional[str] = None
+    cvs_url: Optional[str] = None
+    walgreens_url: Optional[str] = None
+    amazon_url: Optional[str] = None
+    created_at: Optional[datetime] = None
+    updated_at: Optional[datetime] = None
+
     def __str__(self):
         return f"{self.name} ({self.size})"
+
+    def get_retailer_url(self, retailer_id: str) -> Optional[str]:
+        """Get the URL for a specific retailer."""
+        url_map = {
+            'target': self.target_url,
+            'walmart': self.walmart_url,
+            'cvs': self.cvs_url,
+            'walgreens': self.walgreens_url,
+            'amazon': self.amazon_url
+        }
+        return url_map.get(retailer_id)
 
 
 @dataclass

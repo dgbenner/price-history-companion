@@ -7,7 +7,7 @@ from datetime import datetime
 from typing import List, Optional
 from pathlib import Path
 
-from models import Product, Retailer, PricePoint, PriceStats
+from src.models import Product, Retailer, PricePoint, PriceStats
 
 
 class PriceDatabase:
@@ -31,7 +31,15 @@ class PriceDatabase:
                 id TEXT PRIMARY KEY,
                 name TEXT NOT NULL,
                 size TEXT NOT NULL,
-                category TEXT NOT NULL
+                category TEXT NOT NULL,
+                upc TEXT,
+                target_url TEXT,
+                walmart_url TEXT,
+                cvs_url TEXT,
+                walgreens_url TEXT,
+                amazon_url TEXT,
+                created_at TEXT NOT NULL,
+                updated_at TEXT NOT NULL
             )
         """)
         
@@ -71,10 +79,32 @@ class PriceDatabase:
     def add_product(self, product: Product):
         """Add or update a product in the database."""
         cursor = self.conn.cursor()
+        now = datetime.now().isoformat()
+
+        # Check if product exists to preserve created_at
+        cursor.execute("SELECT created_at FROM products WHERE id = ?", (product.id,))
+        existing = cursor.fetchone()
+        created_at = existing['created_at'] if existing else (product.created_at.isoformat() if product.created_at else now)
+
         cursor.execute("""
-            INSERT OR REPLACE INTO products (id, name, size, category)
-            VALUES (?, ?, ?, ?)
-        """, (product.id, product.name, product.size, product.category))
+            INSERT OR REPLACE INTO products
+            (id, name, size, category, upc, target_url, walmart_url, cvs_url,
+             walgreens_url, amazon_url, created_at, updated_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """, (
+            product.id,
+            product.name,
+            product.size,
+            product.category,
+            product.upc,
+            product.target_url,
+            product.walmart_url,
+            product.cvs_url,
+            product.walgreens_url,
+            product.amazon_url,
+            created_at,
+            now
+        ))
         self.conn.commit()
     
     def add_retailer(self, retailer: Retailer):
@@ -200,10 +230,40 @@ class PriceDatabase:
                 id=row['id'],
                 name=row['name'],
                 size=row['size'],
-                category=row['category']
+                category=row['category'],
+                upc=row['upc'],
+                target_url=row['target_url'],
+                walmart_url=row['walmart_url'],
+                cvs_url=row['cvs_url'],
+                walgreens_url=row['walgreens_url'],
+                amazon_url=row['amazon_url'],
+                created_at=datetime.fromisoformat(row['created_at']) if row['created_at'] else None,
+                updated_at=datetime.fromisoformat(row['updated_at']) if row['updated_at'] else None
             )
             for row in cursor.fetchall()
         ]
+
+    def get_product(self, product_id: str) -> Optional[Product]:
+        """Get a specific product by ID."""
+        cursor = self.conn.cursor()
+        cursor.execute("SELECT * FROM products WHERE id = ?", (product_id,))
+        row = cursor.fetchone()
+        if not row:
+            return None
+        return Product(
+            id=row['id'],
+            name=row['name'],
+            size=row['size'],
+            category=row['category'],
+            upc=row['upc'],
+            target_url=row['target_url'],
+            walmart_url=row['walmart_url'],
+            cvs_url=row['cvs_url'],
+            walgreens_url=row['walgreens_url'],
+            amazon_url=row['amazon_url'],
+            created_at=datetime.fromisoformat(row['created_at']) if row['created_at'] else None,
+            updated_at=datetime.fromisoformat(row['updated_at']) if row['updated_at'] else None
+        )
     
     def get_all_retailers(self) -> List[Retailer]:
         """Get all configured retailers."""
