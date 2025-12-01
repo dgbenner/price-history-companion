@@ -165,7 +165,8 @@ python src/models.py
 python src/app.py
 ```
 
-Visit `http://localhost:5000` to start tracking prices.
+Visit `http://localhost:5001` to start tracking prices. Airplay conflicts with 5000.
+
 
 ## Usage Examples
 
