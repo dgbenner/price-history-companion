@@ -46,8 +46,8 @@ def get_dashboard_data():
             product_id = product['id']
             product_name = product['name']
 
-            # Extract brand name from product name (e.g., "Eucerin" from "Eucerin Advanced Repair Lotion")
-            brand_name = product_name.split()[0]
+            # Get brand name from brand field, fallback to first word of product name
+            brand_name = product['brand'] if product['brand'] else product_name.split()[0]
 
             # Get price history for this product
             cursor.execute('''

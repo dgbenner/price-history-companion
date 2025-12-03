@@ -13,6 +13,7 @@ class Product:
     name: str
     size: str  # e.g., '5 oz', '2x2.5 mL'
     category: str  # e.g., 'skincare', 'eye-drops'
+    brand: Optional[str] = None  # Brand/manufacturer name (e.g., 'Eucerin', 'La Roche-Posay')
     upc: Optional[str] = None  # Universal Product Code
     target_url: Optional[str] = None
     walmart_url: Optional[str] = None

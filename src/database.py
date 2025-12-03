@@ -32,6 +32,7 @@ class PriceDatabase:
                 name TEXT NOT NULL,
                 size TEXT NOT NULL,
                 category TEXT NOT NULL,
+                brand TEXT,
                 upc TEXT,
                 target_url TEXT,
                 walmart_url TEXT,
@@ -88,14 +89,15 @@ class PriceDatabase:
 
         cursor.execute("""
             INSERT OR REPLACE INTO products
-            (id, name, size, category, upc, target_url, walmart_url, cvs_url,
+            (id, name, size, category, brand, upc, target_url, walmart_url, cvs_url,
              walgreens_url, amazon_url, created_at, updated_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """, (
             product.id,
             product.name,
             product.size,
             product.category,
+            product.brand,
             product.upc,
             product.target_url,
             product.walmart_url,
@@ -231,6 +233,7 @@ class PriceDatabase:
                 name=row['name'],
                 size=row['size'],
                 category=row['category'],
+                brand=row['brand'] if 'brand' in row.keys() else None,
                 upc=row['upc'],
                 target_url=row['target_url'],
                 walmart_url=row['walmart_url'],
@@ -255,6 +258,7 @@ class PriceDatabase:
             name=row['name'],
             size=row['size'],
             category=row['category'],
+            brand=row['brand'] if 'brand' in row.keys() else None,
             upc=row['upc'],
             target_url=row['target_url'],
             walmart_url=row['walmart_url'],

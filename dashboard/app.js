@@ -97,8 +97,16 @@ function renderProduct(product, container) {
 
     productName.textContent = product.name;
 
-    // For now, use placeholder logo with brand name
-    logoWrapper.innerHTML = `<div style="font-weight: 600; color: #666; font-size: 1.2rem;">${product.brand}</div>`;
+    // Set brand logo
+    if (product.brand) {
+        const brandSlug = product.brand.toLowerCase().replace(/\s+/g, '-');
+        productLogo.src = `images/logos/${brandSlug}.png`;
+        productLogo.alt = `${product.brand} logo`;
+        productLogo.style.display = 'block';
+    } else {
+        // Fallback to text if no brand
+        logoWrapper.innerHTML = `<div style="font-weight: 600; color: #666; font-size: 1.2rem;">No Brand</div>`;
+    }
 
     // Set best average price
     const bestPriceText = productElement.querySelector('.best-price-text');
