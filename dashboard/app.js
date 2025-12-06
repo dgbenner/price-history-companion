@@ -53,28 +53,17 @@ function renderBrandContainer(brand, container) {
     const template = document.getElementById('brand-container-template');
     const brandElement = template.content.cloneNode(true);
 
-    const brandSection = brandElement.querySelector('.brand-container');
     const brandName = brandElement.querySelector('.brand-name');
     const productsWrapper = brandElement.querySelector('.products-wrapper');
-    const overallBest = brandElement.querySelector('.overall-best');
     const collapseToggle = brandElement.querySelector('.collapse-toggle');
 
     brandName.textContent = brand.name;
-    overallBest.textContent = `Overall best value: ${brand.bestRetailer} - consistently lowest average price`;
 
     // Add collapse functionality
     const brandHeader = brandElement.querySelector('.brand-header');
     brandHeader.addEventListener('click', () => {
         productsWrapper.classList.toggle('collapsed');
         collapseToggle.classList.toggle('collapsed');
-    });
-
-    // Add tooltip toggle
-    const infoIcon = brandElement.querySelector('.info-icon');
-    const tooltip = brandElement.querySelector('.footer-tooltip');
-    infoIcon.addEventListener('click', (e) => {
-        e.stopPropagation();
-        tooltip.classList.toggle('hidden');
     });
 
     // Render products
